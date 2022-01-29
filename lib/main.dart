@@ -12,8 +12,18 @@ class MyCoolApp extends StatefulWidget {
 
 class _MyCoolAppState extends State<MyCoolApp> {
   var questions = [
-    'What\'s your favourite color?',
-    'What\'s your favourite animal?',
+    {
+      'questionText': 'What\'s your favourite color?',
+      'answers': ['Black', 'Red', 'Green', 'White'],
+    },
+    {
+      'questionText': 'What\'s your favourite animal?',
+      'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion'],
+    },
+    {
+      'questionText': 'Who\'s your favourite instructor?',
+      'answers': ['Max', 'Max', 'Max', 'Max'],
+    },
   ];
   var _questionIndex = 0;
 
