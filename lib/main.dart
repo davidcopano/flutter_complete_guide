@@ -11,7 +11,7 @@ class MyCoolApp extends StatefulWidget {
 }
 
 class _MyCoolAppState extends State<MyCoolApp> {
-  var questions = [
+  final questions = const [
     {
       'questionText': 'What\'s your favourite color?',
       'answers': ['Black', 'Red', 'Green', 'White'],
@@ -21,8 +21,8 @@ class _MyCoolAppState extends State<MyCoolApp> {
       'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion'],
     },
     {
-      'questionText': 'Who\'s your favourite instructor?',
-      'answers': ['Max', 'Max', 'Max', 'Max'],
+      'questionText': 'What\'s your favourite car manufacturer?',
+      'answers': ['Ford', 'Opel', 'Renault'],
     },
   ];
   var _questionIndex = 0;
@@ -46,12 +46,11 @@ class _MyCoolAppState extends State<MyCoolApp> {
         ),
         body: Column(
           children: [
-            // aquí usamos el widget Question que hemos
-            // creado en lib/question.dart
-            Question(questions[_questionIndex]),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
+            Question(questions[_questionIndex]['questionText']),
+            ...(questions[_questionIndex]['answers'] as List<String>)
+                .map((answer) {
+              return Answer(_answerQuestion, answer);
+            }).toList()
           ],
         ),
       ),
