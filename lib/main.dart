@@ -28,13 +28,9 @@ class _MyCoolAppState extends State<MyCoolApp> {
   var _questionIndex = 0;
 
   void _answerQuestion() {
-    if (_questionIndex == (questions.length - 1)) {
-      print('No more questions available!');
-    } else {
-      setState(() {
-        _questionIndex++;
-      });
-    }
+    setState(() {
+      _questionIndex++;
+    });
   }
 
   @override
@@ -44,15 +40,19 @@ class _MyCoolAppState extends State<MyCoolApp> {
         appBar: AppBar(
           title: Text('My First App'),
         ),
-        body: Column(
-          children: [
-            Question(questions[_questionIndex]['questionText']),
-            ...(questions[_questionIndex]['answers'] as List<String>)
-                .map((answer) {
-              return Answer(_answerQuestion, answer);
-            }).toList()
-          ],
-        ),
+        body: _questionIndex < questions.length
+            ? Column(
+                children: [
+                  Question(questions[_questionIndex]['questionText']),
+                  ...(questions[_questionIndex]['answers'] as List<String>)
+                      .map((answer) {
+                    return Answer(_answerQuestion, answer);
+                  }).toList()
+                ],
+              )
+            : Center(
+                child: Text('You did it!'),
+              ),
       ),
     );
   }
