@@ -16,20 +16,36 @@ class _MyCoolAppState extends State<MyCoolApp> {
   final _questions = const [
     {
       'questionText': 'What\'s your favourite color?',
-      'answers': ['Black', 'Red', 'Green', 'White'],
+      'answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Green', 'score': 3},
+        {'text': 'White', 'score': 1}
+      ],
     },
     {
       'questionText': 'What\'s your favourite animal?',
-      'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion'],
+      'answers': [
+        {'text': 'Rabbit', 'score': 10},
+        {'text': 'Snake', 'score': 7},
+        {'text': 'Elephant', 'score': 4},
+        {'text': 'Lion', 'score': 2}
+      ],
     },
     {
       'questionText': 'What\'s your favourite car manufacturer?',
-      'answers': ['Ford', 'Opel', 'Renault'],
+      'answers': [
+        {'text': 'Ford', 'score': 7},
+        {'text': 'Opel', 'score': 5},
+        {'text': 'Renault', 'score': 3}
+      ],
     },
   ];
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex++;
     });
