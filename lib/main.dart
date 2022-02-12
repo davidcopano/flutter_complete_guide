@@ -64,7 +64,7 @@ class _MyCoolAppState extends State<MyCoolApp> {
                 questionIndex: _questionIndex,
                 answerQuestion: _answerQuestion,
               )
-            : Result(),
+            : Result(_totalScore),
       ),
     );
   }
